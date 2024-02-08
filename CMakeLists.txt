@@ -1,6 +1,26 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
+# Check if C++ compiler information is available
+message(STATUS "-- -- -- -- --")
+if (CMAKE_CXX_COMPILER)
+    message(STATUS "C++ compiler: ${CMAKE_CXX_COMPILER}")
+    message(STATUS "C++ compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
+    message(STATUS "C++ compiler ID: ${CMAKE_CXX_COMPILER_ID}")
+else()
+    message(WARNING "C++ compiler information not available.")
+endif()
+message(STATUS "-- -- -- -- --")
+# Check if C compiler information is available
+if (CMAKE_C_COMPILER)
+    message(STATUS "C compiler: ${CMAKE_C_COMPILER}")
+    message(STATUS "C compiler version: ${CMAKE_C_COMPILER_VERSION}")
+    message(STATUS "C compiler ID: ${CMAKE_C_COMPILER_ID}")
+else()
+    message(WARNING "C compiler information not available.")
+endif()
+message(STATUS "-- -- -- -- --")
+
 set(CUI_PROJECT_NAME 
         main
 )
@@ -42,6 +62,7 @@ include_directories(
 add_executable(${CUI_PROJECT_NAME} ${ALL_SRCS})
 target_link_libraries(${CUI_PROJECT_NAME} wx::net wx::core wx::base)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmem-report -save-temps -ggdb -Xlinker --Map=${CMAKE_BINARY_DIR}/${CUI_PROJECT_NAME}.map")
 
 
 
