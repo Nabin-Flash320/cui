@@ -5,6 +5,10 @@ from pathlib import Path
 import subprocess
 import re
 
+# Add someting like error codes or log levels with colors.
+RED = '\033[91m'
+RESET = '\033[0m'
+
 build_directory = 'proj_build'
 parent_directory = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 cmake_proj_name_str = 'CUI_PROJECT_NAME'
@@ -46,6 +50,7 @@ def run():
     project_name = read_cmake_variable()
     subprocess.run([f'{build_directory}/{project_name}'])
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A script to perform build or run actions.")
 
@@ -57,3 +62,4 @@ if __name__ == "__main__":
         build()
     elif args.action == "run":
         run()
+    print(f'{RED} Pipe CMAKE to python script{RESET}')

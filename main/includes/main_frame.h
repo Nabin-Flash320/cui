@@ -1,3 +1,6 @@
+#ifndef __MAIN_FRAME_H__
+#define __MAIN_FRAME_H__
+
 #include "wx/wx.h"
 
 
@@ -11,3 +14,5 @@ private:
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
 };
+
+#endif // __MAIN_FRAME_H__

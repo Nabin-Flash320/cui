@@ -1,6 +1,13 @@
 
 cmake_minimum_required(VERSION 3.1.0)
 
+# Set C compiler to gcc
+set(CMAKE_C_COMPILER gcc)
+
+# Set C++ compiler to g++
+set(CMAKE_CXX_COMPILER g++)
+
+
 # Check if C++ compiler information is available
 message(STATUS "-- -- -- -- --")
 if (CMAKE_CXX_COMPILER)
@@ -26,11 +33,11 @@ set(CUI_PROJECT_NAME
 )
 
 set(CUI_SRC_DIR 
-        srcs
+        main/srcs
 )
 
 set(CUI_INCLUDE_DIRS 
-        includes
+        main/includes
 )
         
 set(CUI_WX_WIDGETS_DIR 
@@ -63,7 +70,5 @@ add_executable(${CUI_PROJECT_NAME} ${ALL_SRCS})
 target_link_libraries(${CUI_PROJECT_NAME} wx::net wx::core wx::base)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmem-report -save-temps -ggdb -Xlinker --Map=${CMAKE_BINARY_DIR}/${CUI_PROJECT_NAME}.map")
-
-
 
 
